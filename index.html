@@ -1,0 +1,240 @@
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<style>
+
+body {
+	background-color: #ddd;
+}
+
+#navbar {
+	background-color: #444;
+	color: white;
+	padding: 25px;
+}
+
+#sidebar {
+	background-color: #333;
+	color: white;
+	padding: 30px;
+	height: calc(100% - 113px);
+}
+
+#main {
+	background-color: #ddd;
+	padding: 30px;
+}
+
+#navButtons {
+	list-style: none;
+	margin-top: 15px;
+}
+
+#navButtons li {
+	display: inline-block;
+	width: 100px;
+	margin-right: 15px;
+}
+
+#backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0.5;
+	z-index: 1000;
+}
+
+.popup {
+	position: absolute;
+	width: 300px;
+	padding: 20px;
+	background-color: #fff;
+	z-index: 1001;
+	box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+}
+
+.caret {
+	border-style: solid;
+	position: absolute;
+	content: "";
+	width: 0;
+	display: block;
+	z-index: 1002;
+}
+
+.caret-up {
+	border-color: #fff transparent;
+	border-width: 8px 8px 0;
+}
+
+.caret-left {
+	border-color: transparent #fff;
+	border-width: 8px 0 8px 8px;
+}
+
+.caret-right {
+	border-color: transparent #fff;
+	border-width: 8px 8px 8px 0;
+}
+
+.caret-down {
+	border-color: #fff transparent;
+	border-width: 0 8px 8px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container-fluid">
+	<div class="row">
+		<div id="navbar" class="col-sm-12">
+			<h2 class="pull-left">center for innovation</h2>
+			<ul id="navButtons" class="pull-right">
+				<li><button id="btnDashboard" class="btn btn-default btn-block">Dash</button></li>
+				<li><button id="btnHosts" class="btn btn-success btn-block">Hosts</button></li>
+				<li><button id="btnJobs" class="btn btn-info btn-block">Jobs</button></li>
+				<li><button id="btnSettings" class="btn btn-danger btn-block">Settings</button></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div id="sidebar" class="col-sm-2">
+			<button id="btnAction" class="btn btn-primary btn-block">Action</button>
+			<br>
+			<button id="btnSidebar" class="btn btn-primary btn-block">Secondary Action</button>
+			<br>
+			<button id="btnServices" class="btn btn-primary btn-block">Services</button>
+			<br>
+			<button id="btnAdmin" class="btn btn-primary btn-block" onclick="showPopup()">Admin</button>
+		</div>
+		<div id="main" class="col-sm-10">
+			<p>Organized organic you probably haven't heard of them tattooed letterpress, 3 wolf moon cornhole Pinterest. Godard authentic polaroid yr, ennui stumptown Bushwick flexitarian plaid photo booth trust fund kale chips roof party. Selvage brunch ethical Thundercats, deep v tousled PBR&B seitan chambray typewriter put a bird on it paleo 8-bit sartorial. Twee American Apparel Odd Future, locavore chambray polaroid fingerstache messenger bag raw denim. Retro locavore chia yr, whatever farm-to-table post-ironic skateboard small batch semiotics fashion axe cornhole. PBR&B literally banh mi tousled salvia, gentrify plaid trust fund chia Bushwick Shoreditch. Brooklyn health goth mlkshk, tote bag brunch cred shabby chic salvia ugh Kickstarter pickled bespoke wayfarers typewriter.</p>
+
+			<p>Kale roof party keffiyeh, readymade paleo quinoa crucifix cronut synth PBR&B small batch biodiesel cardigan. Pop-up flexitarian tousled chillwave, forage bespoke lumbersexual farm-to-table Thundercats Godard chia cardigan brunch pickled umami. Blog direct trade occupy YOLO, Shoreditch Wes Anderson hella quinoa readymade photo booth Brooklyn PBR tofu Tumblr twee. Direct trade Helvetica banjo mixtape fashion axe kogi shabby chic, cold-pressed meditation Tumblr master cleanse farm-to-table cray. Mumblecore vegan sriracha fingerstache. Polaroid butcher tilde cred, Blue Bottle farm-to-table keytar Marfa put a bird on it hashtag vinyl ugh. Mlkshk iPhone 90's wolf, Vice Pinterest authentic pop-up ethical lo-fi vegan mixtape cred.</p>
+
+			<p>Listicle lo-fi jean shorts, actually meditation Pitchfork +1 drinking vinegar taxidermy tilde. Lomo swag migas cold-pressed post-ironic, farm-to-table tilde occupy Williamsburg authentic Wes Anderson gluten-free four loko. Neutra YOLO bitters ugh, cold-pressed pug biodiesel selfies mlkshk tilde aesthetic meh. Marfa Austin fap, semiotics narwhal jean shorts sriracha meh mlkshk YOLO. Craft beer Kickstarter health goth bespoke organic taxidermy, farm-to-table McSweeney's. Hoodie fanny pack aesthetic try-hard, ugh you probably haven't heard of them sriracha post-ironic fap. Biodiesel actually Intelligentsia mixtape, ethical lo-fi sustainable.</p>
+
+			<p>Readymade Thundercats fap, food truck McSweeney's cliche jean shorts farm-to-table Bushwick seitan distillery quinoa listicle lomo. Twee 90's distillery tote bag Brooklyn, authentic trust fund 3 wolf moon VHS Cosby sweater sriracha scenester deep v gentrify. Small batch vegan selvage farm-to-table organic Blue Bottle. Jean shorts cold-pressed stumptown, skateboard Bushwick Schlitz disrupt taxidermy. Cold-pressed next level Echo Park hashtag. Photo booth DIY pop-up paleo letterpress, XOXO tote bag. Fanny pack VHS Pitchfork, small batch skateboard four loko deep v master cleanse Echo Park.</p>
+		</div>
+	</div> 
+</div>
+
+<div id="backdrop"></div>
+
+<div class="popup">
+	<p>
+		Dashboard is where you can find all your summary view of your account.
+		Your Dashboard organized according to your use cases.
+	</p>
+	<button class="btn btn-primary" onclick="closePopup()">Okay, got it!</button>
+</div>
+
+<div class="caret"></div>
+
+<script>
+
+	var currentPopup = 0;
+
+	function closePopup() {
+		if (++currentPopup >= popups.length) {
+			$("#backdrop").fadeTo("slow", 0, function () { $("#backdrop").hide (); });
+			$(".popup").hide();
+			$(".caret").hide();
+			$("#backdrop").hide();
+		} else {
+			drawPopup();
+		}
+	}
+
+	function showPopup() {
+		$(".popup").show();
+		$(".caret").show();
+		$("#backdrop").show();
+		$("#backdrop").fadeTo("slow", 0.3);
+	}
+
+	var popups = [
+		{
+			id: "btnDashboard",
+			align: "left",
+			text: "Here is the dashboard button. Do stuff...."
+		},
+		{
+			id: "btnAdmin",
+			align: "down",
+			text: "Here is the admin button. Do stuff...."
+		},
+		{
+			id: "btnHosts",
+			align: "right",
+			text: "Here is the dashboard button. Do stuff...."
+		},
+		{
+			id: "btnServices",
+			align: "up",
+			text: "Here is the admin button. Do stuff...."
+		}
+	];
+
+	function drawPopup ()
+	{
+		var selected = $("#" + popups[currentPopup].id);
+		var align = popups[currentPopup].align;
+
+		var caret = $(".caret");
+		var popup = $(".popup");
+		var caretTop, caretLeft, popupTop, popupLeft;
+		caret.removeClass ();
+		caret.addClass ("caret");
+		caret.addClass ("caret-" + align);
+
+		if (align == "up") {
+			caretTop = selected.offset().top - caret.outerHeight() - 5;
+			caretLeft = selected.offset().left + selected.outerWidth() / 2 - caret.outerWidth() / 2;
+
+			popupTop = caretTop - popup.outerHeight();
+			popupLeft = selected.offset().left;
+		}
+		else if (align == "left") {
+			caretTop = selected.offset().top + selected.outerHeight() / 2 - caret.outerHeight() / 2;
+			caretLeft = selected.offset().left - caret.outerWidth();
+
+			popupTop = selected.offset().top - caret.outerHeight() / 2;
+			popupLeft = caretLeft - popup.outerWidth();
+		}
+		else if (align == "right") {
+			caretTop = selected.offset().top + selected.outerHeight() / 2 - caret.outerHeight() / 2;
+			caretLeft = selected.offset().left + selected.outerWidth() + 5;
+
+			popupTop = selected.offset().top - caret.outerHeight() / 2;
+			popupLeft = caretLeft + caret.outerWidth();
+		}
+		else if (align == "down") {
+			caretTop = selected.offset().top + selected.outerHeight() + 5;
+			caretLeft = selected.offset().left + selected.outerWidth() / 2 - caret.outerWidth() / 2;
+
+			popupTop = caretTop + caret.outerHeight();
+			popupLeft = selected.offset().left;
+		}
+
+		caret.offset ({ top: caretTop, left: caretLeft });
+		popup.offset ({ top: popupTop, left: popupLeft });
+	}
+	
+	drawPopup();
+
+</script>
+
+
+</body>
+</html>
